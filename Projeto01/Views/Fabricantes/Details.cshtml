@@ -1,34 +1,32 @@
 ﻿@model Projeto01.Models.Fabricante
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando detalhes de um Fabricante";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Fabricante</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
-    
-        </dl>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Visualizando detalhes de um Fabricante
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.FabricanteId }) |
-        @Html.ActionLink("Retornar para a lista", "Index")
-    </p>
-</body>
-</html>
+    <div class="panel-body">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                @Html.EditorFor(mode => Model.Nome, new { htmlAttributes = new { @class = "form-control", disable = "disable" } })
+            </div>
+        </div>
+    </div>
+   <div class="panel-footer panel-info">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar Alterações" class="btn btn-danger" />
+            @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-warning" })
+        </div>
+        <br />
+        <br />
+    </div>
+</div>
