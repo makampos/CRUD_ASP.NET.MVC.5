@@ -14,6 +14,7 @@ namespace Projeto01.Contexts
            /// Construtor base da classe EFContext que recebe a Connection String 
            /// </summary>
         public EFContext() : base("Asp_Net_MVC_CS") {
+            Database.SetInitializer<EFContext>( new DropCreateDatabaseIfModelChanges<EFContext>());
         
         }
         /// <summary>
@@ -25,5 +26,7 @@ namespace Projeto01.Contexts
         /// Classe persistida no banco de dados
         /// </summary>
         public DbSet<Fabricante> Fabricantes { get; set; }
+
+        public DbSet<Produto> Produtos { get; set; }
     }
 }
