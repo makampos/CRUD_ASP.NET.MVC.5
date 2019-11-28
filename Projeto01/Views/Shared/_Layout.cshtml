@@ -22,12 +22,12 @@
         <div class="row">
             <div class="	col-md-3	bg-success">
                 <ul class="nav	nav-pills	nav-stacked">
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation">
+                    <li id="LiHome" role="presentation" class="active"><a href="#">Home</a></li>
+                    <li id="licategorias" role="presentation">
                         @Html.ActionLink("Categorias",
                         "Index", "Categorias")
                     </li>
-                    <li role="presentation">
+                    <li id="liFabricantes" role="presentation">
                         @Html.ActionLink("Fabricantes",
                         "Index", "Fabricantes")
                     </li>
@@ -47,6 +47,12 @@
     </div>
     <script src="@Url.Content("~/scripts/jquery-3.3.1.js")"></script>
     <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
-    @RenderSection("ScriptPage",false);	.
+    @RenderSection("ScriptPage", false);	.
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liFabricantes').addClass("active");
+        });
+    </script>
 </body>
 </html>

@@ -47,7 +47,7 @@ namespace Projeto01.Controllers
         public ActionResult Create (Fabricante fabricante)
         {
             context.Fabricantes.Add(fabricante);
-            context.SaveChanges();
+            context.SaveChanges();            
             return RedirectToAction("Index");
         }
 
@@ -132,8 +132,9 @@ namespace Projeto01.Controllers
 
         //POST: Fabricantes/Delete
         /// <summary>
-        /// 
-        /// </summary>
+        ///  Action captura uma requisição HTTP POST e realiza o DELETE do objeto requisitado.
+        ///  TempData cria a chave MESSAGE e nela armazena um valor que  será recuperada na View DELETE
+        /// </summary>  
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
@@ -143,6 +144,7 @@ namespace Projeto01.Controllers
             Fabricante fabricante = context.Fabricantes.Find(id);
             context.Fabricantes.Remove(fabricante);
             context.SaveChanges();
+            TempData["Message"] = "Fabricante" + fabricante.Nome.ToUpper() + "foi removido";
             return RedirectToAction("Index");
         }
     }
